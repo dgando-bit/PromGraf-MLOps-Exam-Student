@@ -1,8 +1,8 @@
 all: 
-	docker-compose up --build -d
+	docker compose up --build -d
 
 stop: 
-	docker-compose down
+	docker compose down
 
 evaluation:
-	docker-compose up -d --build evaluation
+	docker compose up -d --build evaluation

@@ -1,5 +1,18 @@
 services:
+  bike-api:
+    build: ./src/api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/models
+      - ./data:/data
+    restart: unless-stopped
+
   evaluation:
     build: ./src/evaluation
+    volumes:
+      - ./data:/data
     depends_on:
       - bike-api
+    environment:
+      - API_URL=http://bike-api:8000
