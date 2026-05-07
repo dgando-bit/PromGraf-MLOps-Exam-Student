@@ -1,19 +1,21 @@
 # Web framework
 fastapi==0.115.12
 uvicorn[standard]==0.34.2
- 
+
 # Data
 pandas==2.2.3
-numpy==2.2.5
+numpy<2.1
 pyarrow==20.0.0
 requests==2.32.3
- 
+
 # ML
 scikit-learn==1.6.1
 joblib==1.4.2
- 
+
 # Monitoring — Evidently
-evidently==0.6.7
- 
+# evidently==0.4.30
+# evidently==0.6.7
+evidently>=0.7.0,<0.8
+
 # Monitoring — Prometheus
 prometheus-client==0.21.1
