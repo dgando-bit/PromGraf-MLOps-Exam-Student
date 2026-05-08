@@ -1,0 +1,12 @@
+apiVersion: 1
+
+providers:
+  - name: "MLOps Dashboards"
+    orgId: 1
+    type: file
+    disableDeletion: false      # permet de supprimer un dashboard depuis l'UI
+    updateIntervalSeconds: 30   # recharge le JSON si modifié sur disque
+    allowUiUpdates: true        # permet d'éditer depuis l'UI sans perdre le provisioning
+    options:
+      path: /etc/grafana/dashboards   # chemin dans le conteneur (voir volume dans docker-compose)
+      foldersFromFilesStructure: true # crée automatiquement des dossiers Grafana selon l'arborescence des fichiers JSON
