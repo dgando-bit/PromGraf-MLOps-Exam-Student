@@ -498,3 +498,42 @@ async def evaluate(payload: EvaluationData):
     except Exception as e:
         logger.exception("Evaluation failed: %s", e)
         raise HTTPException(status_code=500, detail=f"Evaluation failed: {e}")
+
+@app.post("/trigger-drift")
+async def trigger_drift():
+    """
+    Simule une dérive massive des données pour déclencher l'alerte 'evidently_drift_detected'.
+    On compare des données aberrantes au dataset de référence.
+    """
+    if reference_data is None:
+        raise HTTPException(status_code=503, detail="Reference data not loaded")
+
+    # 1. Création de données "aberrantes" (Drift)
+    # On génère des valeurs hors des bornes habituelles du dataset de référence
+    drift_data = []
+    for _ in range(100):
+        drift_data.append({
+            "temp": 100.0,        # Valeur impossible
+            "atemp": 100.0,
+            "hum": -10.0,         # Valeur impossible
+            "windspeed": 50.0,
+            "mnth": 1,
+            "hr": 12,
+            "weekday": 1,
+            "season": 1,
+            "holiday": 0,
+            "workingday": 1,
+            "weathersit": 4,
+            "cnt": 9999,          # Cible délirante pour casser aussi le RMSE
+            "dteday": "2026-01-01"
+        })
+
+    # 2. On appelle la logique d'évaluation existante
+    # En passant ces données au format attendu par /evaluate
+    payload = EvaluationData(
+        data=drift_data,
+        evaluation_period_name="SIMULATED_DRIFT_ATTACK"
+    )
+    
+    # On réutilise la logique de l'endpoint evaluate
+    return await evaluate(payload)
