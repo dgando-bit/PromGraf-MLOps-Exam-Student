@@ -6,6 +6,7 @@
 .
 ├── Makefile
 ├── README.md
+├── README_student.md
 ├── data
 ├── deployment
 │   ├── grafana
@@ -39,13 +40,14 @@
 │       └── run_evaluation.py
 └── tests
     └── simulate.sh
+
 ```
 
 
 ### Guide de démarrage rapide
 
-1. `make all` (Lancer l'API et le monitoring)
-2. `make train` (Entraîner le modèle initial)
+1. `make train` (Entraîner le modèle initial)
+2. `make all` (Lancer l'API et le monitoring)
 3. `make evaluation` (Lancer l'évaluation du modèle)
 4. `make fire-alert` (Déclencher une alerte de dérive)
 5. `make simulate` (Simuler une scénario de test)

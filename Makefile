@@ -19,5 +19,5 @@ fire-alert:
 	@echo "\n✅ Requête envoyée. Vérifiez la métrique 'evidently_drift_detected' sur /metrics."
 
 simulate:
-	@chmod +x votre_script.sh
+	@chmod +x tests/simulate.sh
 	@./tests/simulate.sh
