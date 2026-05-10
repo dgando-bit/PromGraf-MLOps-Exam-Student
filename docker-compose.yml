@@ -48,6 +48,7 @@ services:
       # Fichiers de provisioning (datasources + dashboards)
       - ./deployment/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
       - ./deployment/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./deployment/grafana/provisioning/alerting:/etc/grafana/provisioning/alerting
       # Fichiers JSON des dashboards
       - ./deployment/grafana/dashboards:/etc/grafana/dashboards
     depends_on:

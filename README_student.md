@@ -1,5 +1,3 @@
-# Examen du cours Prometheus & Grafana. (English version below)
-
 ### Structure du repo :
 
 ```
@@ -46,12 +44,13 @@
 
 ### Guide de démarrage rapide
 
-1. `make train` (Entraîner le modèle initial)
-2. `make all` (Lancer l'API et le monitoring)
-3. `make evaluation` (Lancer l'évaluation du modèle)
-4. `make fire-alert` (Déclencher une alerte de dérive)
-5. `make simulate` (Simuler une scénario de test)
-6. `make stop` (Nettoyer l'environnement)
+1. `make train`       — Entraîner le modèle initial
+2. `make all`         — Lancer tous les services (API, Prometheus, Grafana, Node Exporter)
+3. `make evaluation`  — Évaluer le modèle et mettre à jour les métriques Prometheus
+4. `make simulate`    — Simuler un scénario de trafic réel sur /predict
+5. `make error`       — Générer des erreurs HTTP (422/404) pour tester le panel Error Rate
+6. `make fire-alert`  — Déclencher intentionnellement les alertes Grafana (drift + RMSE)
+7. `make stop`        — Arrêter tous les services
 
 ### --- Métrique bonus : détection de dérive Evidently ---
 
